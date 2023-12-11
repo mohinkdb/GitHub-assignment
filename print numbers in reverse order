@@ -1,0 +1,17 @@
+#include <stdio.h>
+
+int main() {
+    int n;
+
+    // Input an integer
+    printf("Enter a positive integer: ");
+    scanf("%d", &n);
+
+    // Print numbers in reverse order
+    printf("Numbers in reverse order from %d to 1:\n", n);
+    for (int i = n; i >= 1; --i) {
+        printf("%d\n", i);
+    }
+
+    return 0;
+}
