@@ -1,23 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('soc.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .login-container {
+            background-color: rgb(255, 255, 255);
+            padding: 20px;
+            border-radius: 0px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            text-align: center;
+        }
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 3px;
+            border: 0.1px solid #ccc;
+        }
+        .login-btn {
+            width: 90%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .login-btn:hover {
+            background-color: #0056b3;
+        }
+        .warning {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
 <body>
-
-<h2>Login Form</h2>
-
-<form action="/submit.php">
-  <div class="container">
-    <label for="email"><b>mail id</b></label>
-    <input type="text" placeholder="Enter mail id" name="umail" required>
-
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
-
-    <button type="submit">Login</button>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <input type="text" id="username" class="input-field" placeholder="Enter Username" required><br>
+            <input type="password" id="password" class="input-field" placeholder="Enter Password" required><br>
+            <button type="submit" class="login-btn">Login</button>
+            <div id="warning" class="warning"></div>
+        </form>
+    </div>
     <script>
-        event.preventdefault();
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Predefined credentials
+            const predefinedUsername = "KANASIBI";
+            const predefinedPassword = "KANASIBI";
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const warning = document.getElementById('warning');
+            if (password.length > 8) {
+                warning.textContent = prompt("Password should not exceed 8 characters!");
+            } else if (username === predefinedUsername && password === predefinedPassword) {
+                window.location.href = "http://127.0.0.1:5500/Website.html";
+            } else {
+                warning.textContent =prompt("Invalid Info !");
+            }
+        });
     </script>
-  </div>
-</form> 
-
 </body>
-</html> 
+</html>
